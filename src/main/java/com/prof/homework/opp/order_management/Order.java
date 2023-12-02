@@ -3,71 +3,67 @@ package com.prof.homework.opp.order_management;
 import java.util.Arrays;
 
 public class Order {
+    private Product[] products;
+    private String status;
+    private double totalAmount;
 
-    private String[]listProducts;
-    private String orderStatus;
-    private int totalAmount;
-    private String [] basket;
-
-    public String[] getListProducts() {
-        return listProducts;
+    public Order() {
+        this.products = new Product[0];
+        this.status = "Pending";
+        this.totalAmount = 0.0;
     }
 
-    public void setListProducts(String[] listProducts) {
-        this.listProducts = listProducts;
+    public Product[] getProducts() {
+        return products;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
+    public void setProducts(Product[] products) {
+        this.products = products;
     }
 
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public int getTotalAmount() {
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(int totalAmount) {
+    public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public String[] getBasket() {
-        return basket;
-    }
+    public void addProduct(Product product, int quantity) {
+        if (product.checkAvailability(quantity)) {
+            Product[] newProducts = new Product[products.length + 1];
+            System.arraycopy(products, 0, newProducts, 0, products.length);
+            newProducts[products.length] = product;
+            products = newProducts;
 
-    public void setBasket(String[] basket) {
-        this.basket = basket;
-    }
-
-    public Order(String[] listProducts, String orderStatus, String[] basket, int totalAmount) {
-        this.listProducts = listProducts;
-        this.orderStatus = orderStatus;
-        this.totalAmount = totalAmount;
-        this.basket = basket;
-    }
-
-    public void addProduct(String product){
-       if(basket == null){
-           basket = new String[0];
-       }
-        String[] newBasket = new String[basket.length + 1];
-        for (int i = 0; i < basket.length; i++) {
-            newBasket[i] = basket[i];
-        }
-        newBasket[basket.length] = product;
-        basket = newBasket;
-        totalAmount = calculateTotalAmount();
-        System.out.println("Total Amount : " + calculateTotalAmount()+ " $ ");
-        for (String product1 : basket) {
-            System.out.println(product1);
+            totalAmount += product.getPrice() * quantity;
+            product.updateQuantity(quantity);
+        } else {
+            System.out.println("Not enough goods in stock");
         }
     }
-    private int calculateTotalAmount(){
-        if(basket == null){
-            return 0;
-        }
+
+    public double calculateTotalAmount() {
         return totalAmount;
     }
+    public String getOrderDetails() {
+        String details = "Order status : " + status + "\n" +
+                "Total amount : " + totalAmount + "\n" +
+                "Item order:\n";
+
+        for (Product product : products) {
+            details += product.getName() + " - " + product.getPrice() + "\n";
+        }
+
+        return details;
+    }
+
 }
