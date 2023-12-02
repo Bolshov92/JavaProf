@@ -1,4 +1,4 @@
-package com.prof.homework._29_11_23;
+package com.prof.homework.library_management_system;
 import java.time.LocalDate;
 
 public class Magazine extends LibraryItem{
@@ -40,5 +40,12 @@ public class Magazine extends LibraryItem{
       isMonthly = monthly;
    }
 
-
+   @Override
+   public String toString() {
+      return "Magazine{" +
+              "issueNumber=" + issueNumber +
+              ", releaseDate=" + releaseDate +
+              ", isMonthly=" + isMonthly +
+              '}';
+   }
 }

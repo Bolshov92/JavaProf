@@ -1,4 +1,4 @@
-package com.prof.homework._29_11_23;
+package com.prof.homework.library_management_system;
 
 import java.time.LocalDate;
 
@@ -69,4 +69,14 @@ public class Book extends LibraryItem implements Borrowable,Maintainable  {
     public ItemCondition checkCondition() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "status=" + status +
+                ", publishDate=" + publishDate +
+                ", pageCount=" + pageCount +
+                '}';
+    }
 }
+
