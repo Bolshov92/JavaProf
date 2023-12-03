@@ -53,6 +53,9 @@ public class CollectionProcessor {
         System.out.println();
         findOldestItem(items);
 
+        System.out.println();
+        groupItemsByAuthor(items);
+
     }
 
     public static void printAllItems(List<LibraryItem> items) {
@@ -140,6 +143,21 @@ public class CollectionProcessor {
 
 
     public static void groupItemsByAuthor(List<LibraryItem> items) {
+        List<String> group = new ArrayList<>();
+        for (LibraryItem e : items) {
+            if (!group.contains(e.getAuthor())) {
+                group.add(e.getAuthor());
+            }
+        }
+        for (String author : group) {
+            System.out.print("Author " + author + " Books : ");
+            for (LibraryItem book : items) {
+                if (book.getAuthor().equals(author)) {
+                    System.out.print(" " + book.getTitle());
+                }
+            }
+            System.out.println();
+        }
     }
 
     public static void listItemsForRepair(List<LibraryItem> items) {
