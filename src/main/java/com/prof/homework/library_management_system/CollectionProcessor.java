@@ -70,22 +70,7 @@ public class CollectionProcessor {
     }
 
     public static void sortByTitle(List<LibraryItem> items) {
-        int n = items.size();
-
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                String title1 = items.get(j).getTitle();
-                String title2 = items.get(j + 1).getTitle();
-
-                if (title1.compareTo(title2) > 0) {
-                    LibraryItem temp = items.get(j);
-                    items.set(j, items.get(j + 1));
-                    items.set(j + 1, temp);
-                }
-            }
-        }
-
-        System.out.println("Sorted by Title:");
+        Collections.sort(items, Comparator.comparing(LibraryItem::getTitle));
         printAllItems(items);
     }
 
@@ -133,6 +118,24 @@ public class CollectionProcessor {
     }
 
     public static void findOldestItem(List<LibraryItem> items) {
+        LocalDate current = LocalDate.now();
+        LibraryItem oldestItem = null;
+        for (LibraryItem item : items) {
+            if (item instanceof Book) {
+                Book temp = (Book) item;
+                if (temp.getPublishDate().isBefore(current)) {
+                    current = temp.getPublishDate();
+                    oldestItem = temp;
+                }
+            } else {
+                Magazine temps = (Magazine) item;
+                if (temps.getReleaseDate().isBefore(current)) {
+                    current = temps.getReleaseDate();
+                    oldestItem = temps;
+                }
+            }
+        }
+        System.out.println(oldestItem);
     }
 
 
