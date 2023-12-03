@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Librarian implements Maintainable {
-   private String name;
-   private String employeeId;
-   private List<LibraryItem> managedItems;
+    private String name;
+    private String employeeId;
+    private List<LibraryItem> managedItems;
 
     public Librarian(String name, String employeeId, List<LibraryItem> managedItems) {
         this.name = name;
@@ -37,7 +37,6 @@ public class Librarian implements Maintainable {
     public void setManagedItems(List<LibraryItem> managedItems) {
         this.managedItems = managedItems;
     }
-
 
 
     @Override

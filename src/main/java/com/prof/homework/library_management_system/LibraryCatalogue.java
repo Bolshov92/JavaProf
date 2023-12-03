@@ -3,8 +3,8 @@ package com.prof.homework.library_management_system;
 import java.util.List;
 
 public class LibraryCatalogue implements Searchable {
-   private List<Book> books;
-   private List<Magazine> magazines;
+    private List<Book> books;
+    private List<Magazine> magazines;
 
     public List<Book> getBooks() {
         return books;

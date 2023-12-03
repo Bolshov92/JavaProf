@@ -2,10 +2,10 @@ package com.prof.homework.library_management_system;
 
 import java.time.LocalDate;
 
-public class Book extends LibraryItem implements Borrowable,Maintainable  {
+public class Book extends LibraryItem implements Borrowable, Maintainable {
     private BookStatus status;
-   private LocalDate publishDate;
-   private int pageCount;
+    private LocalDate publishDate;
+    private int pageCount;
 
     public Book(String title, String author, Genre genre, BookStatus status, LocalDate publishDate, int pageCount) {
         super(title, author, genre);
@@ -39,7 +39,6 @@ public class Book extends LibraryItem implements Borrowable,Maintainable  {
     }
 
 
-
     @Override
     public void borrowItem(User user) {
 
@@ -52,10 +51,10 @@ public class Book extends LibraryItem implements Borrowable,Maintainable  {
 
     @Override
     public boolean isAvailable() {
-       if(this.status.equals(BookStatus.AVAILABLE)){
-           return true;
-       }
-       return false;
+        if (this.status.equals(BookStatus.AVAILABLE)) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -76,8 +75,8 @@ public class Book extends LibraryItem implements Borrowable,Maintainable  {
     @Override
     public String toString() {
         return "Book{" +
-                " title = " + getTitle()+
-                " author = " + getAuthor()+
+                " title = " + getTitle() +
+                " author = " + getAuthor() +
                 " genre = " + getGenre() +
                 " status = " + status +
                 ", publishDate = " + publishDate +

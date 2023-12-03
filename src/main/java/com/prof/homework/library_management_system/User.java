@@ -4,9 +4,9 @@ import java.util.List;
 
 public class User implements Searchable {
 
-   private String name;
-   private String id;
-   private List<LibraryItem> borrowedItems;
+    private String name;
+    private String id;
+    private List<LibraryItem> borrowedItems;
 
 
     public String getName() {
