@@ -52,7 +52,10 @@ public class Book extends LibraryItem implements Borrowable,Maintainable  {
 
     @Override
     public boolean isAvailable() {
-        return false;
+       if(this.status.equals(BookStatus.AVAILABLE)){
+           return true;
+       }
+       return false;
     }
 
     @Override
@@ -73,9 +76,12 @@ public class Book extends LibraryItem implements Borrowable,Maintainable  {
     @Override
     public String toString() {
         return "Book{" +
-                "status=" + status +
-                ", publishDate=" + publishDate +
-                ", pageCount=" + pageCount +
+                " title = " + getTitle()+
+                " author = " + getAuthor()+
+                " genre = " + getGenre() +
+                " status = " + status +
+                ", publishDate = " + publishDate +
+                ", pageCount = " + pageCount +
                 '}';
     }
 }

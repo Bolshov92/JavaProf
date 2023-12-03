@@ -1,6 +1,6 @@
 package com.prof.homework.library_management_system;
 
-public abstract class LibraryItem {
+public abstract class LibraryItem  {
 
    private String title ;
    private String author ;

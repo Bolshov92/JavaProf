@@ -10,7 +10,7 @@ public class CollectionProcessor {
     public static void main(String[] args) {
         Book bookOne = new Book("Harry Potter", "John Jonson", Genre.FANTASY, BookStatus.AVAILABLE, LocalDate.of(2002, 9, 11), 200);
         Book bookTwo = new Book("Algorithms", "Body", Genre.HISTORY, BookStatus.AVAILABLE, LocalDate.of(1992, 12, 23), 350);
-        Book bookThree = new Book("Minor", "John Jonson", Genre.BIOGRAPHY, BookStatus.RESERVED, LocalDate.of(2010, 7, 8), 89);
+        Book bookThree = new Book("Minor", "John Jonson", Genre.BIOGRAPHY, BookStatus.BORROWED, LocalDate.of(2010, 7, 8), 89);
         Book bookFour = new Book("World", "Body", Genre.SCIENCE, BookStatus.LOST, LocalDate.of(1954, 2, 15), 132);
         Magazine magazine = new Magazine("title", "Body", Genre.FANTASY, 10, LocalDate.of(2023, 12, 23), true);
         List<Book> books = new ArrayList<>();
@@ -37,6 +37,17 @@ public class CollectionProcessor {
         listItemsByGenre(items, Genre.HISTORY);
         System.out.println();
         sortByTitle(items);
+        System.out.println();
+        filterByAuthor(items, "Body");
+        System.out.println();
+        countItemsByStatus(items, BookStatus.AVAILABLE);
+        System.out.println();
+
+        updateStatus(items, BookStatus.BORROWED, BookStatus.AVAILABLE);
+        printAllItems(items);
+
+        System.out.println();
+        listAvailableItems(items);
 
     }
 
@@ -54,57 +65,105 @@ public class CollectionProcessor {
         }
     }
 
-   public static void sortByTitle(List<LibraryItem> items){
-       int n = items.size();
+    public static void sortByTitle(List<LibraryItem> items) {
+        int n = items.size();
 
-       for (int i = 0; i < n - 1; i++) {
-           for (int j = 0; j < n - i - 1; j++) {
-               String title1 = items.get(j).getTitle();
-               String title2 = items.get(j + 1).getTitle();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                String title1 = items.get(j).getTitle();
+                String title2 = items.get(j + 1).getTitle();
 
-               if (title1.compareTo(title2) > 0) {
-                   LibraryItem temp = items.get(j);
-                   items.set(j, items.get(j + 1));
-                   items.set(j + 1, temp);
-               }
-           }
-       }
+                if (title1.compareTo(title2) > 0) {
+                    LibraryItem temp = items.get(j);
+                    items.set(j, items.get(j + 1));
+                    items.set(j + 1, temp);
+                }
+            }
+        }
 
-       System.out.println("Sorted by Title:");
-       printAllItems(items);
-   }
-   public static void filterByAuthor(List<LibraryItem> items, String author){
-   }
-   public static void countItemsByStatus(List<LibraryItem> items, BookStatus status){
-   }
-   public static void updateStatus(List<LibraryItem> items, BookStatus oldStatus, BookStatus newStatus){
-   }
-   public static void listAvailableItems(List<LibraryItem> items){
-   }
-   public static void findOldestItem(List<LibraryItem> items){
-   }
-   public static void groupItemsByAuthor(List<LibraryItem> items){
-   }
-   public static void listItemsForRepair(List<LibraryItem> items){
-   }
-   public static void displayItemCount(List<LibraryItem> items){
-   }
-   public static void listBorrowedItemsByUser(List<LibraryItem> items, User user){
-   }
-   public static void removeLostItems(List<LibraryItem> items){
-   }
-   public static void addItemToList(List<LibraryItem> items, LibraryItem item){
-   }
-   public static void removeItemFromList(List<LibraryItem> items, LibraryItem item){
-   }
-   public static void sortItemsByPublicationDate(List<LibraryItem> items){
-   }
-   public static void findMostPopularGenre(List<LibraryItem> items){
-   }
-   public static void calculateAveragePageCount(List<Book> books){
-   }
-   public static void listMonthlyMagazines(List<Magazine> magazines){
-   }
-   public static void listItemsByCondition(List<LibraryItem> items, ItemCondition condition){
-   }
+        System.out.println("Sorted by Title:");
+        printAllItems(items);
+    }
+
+    public static void filterByAuthor(List<LibraryItem> items, String author) {
+
+        for (LibraryItem e : items) {
+            if (e.equals(author)) {
+                System.out.println("Author : " + e.getAuthor());
+            }
+        }
+    }
+
+    public static void countItemsByStatus(List<LibraryItem> items, BookStatus status) {
+        int count = 0;
+        for (LibraryItem e : items) {
+            if (e instanceof Book) {
+                if (((Book) e).getStatus().equals(status)) {
+                    count++;
+                }
+            }
+        }
+        System.out.println("Items by Status : " + status + " times " + count);
+    }
+
+    public static void updateStatus(List<LibraryItem> items, BookStatus oldStatus, BookStatus newStatus) {
+        for (LibraryItem e : items) {
+            if (e instanceof Book) {
+                if ((((Book) e).getStatus().equals(oldStatus))) {
+                    ((Book) e).setStatus(newStatus);
+                }
+            }
+        }
+    }
+
+    public static void listAvailableItems(List<LibraryItem> items) {
+        for (LibraryItem e : items) {
+            if (e instanceof Book) {
+                if (((Book) e).isAvailable()) {
+                    System.out.println(e);
+                }
+            }
+
+
+        }
+    }
+
+    public static void findOldestItem(List<LibraryItem> items) {
+    }
+
+    public static void groupItemsByAuthor(List<LibraryItem> items) {
+    }
+
+    public static void listItemsForRepair(List<LibraryItem> items) {
+    }
+
+    public static void displayItemCount(List<LibraryItem> items) {
+    }
+
+    public static void listBorrowedItemsByUser(List<LibraryItem> items, User user) {
+    }
+
+    public static void removeLostItems(List<LibraryItem> items) {
+    }
+
+    public static void addItemToList(List<LibraryItem> items, LibraryItem item) {
+    }
+
+    public static void removeItemFromList(List<LibraryItem> items, LibraryItem item) {
+    }
+
+    public static void sortItemsByPublicationDate(List<LibraryItem> items) {
+    }
+
+    public static void findMostPopularGenre(List<LibraryItem> items) {
+    }
+
+    public static void calculateAveragePageCount(List<Book> books) {
+    }
+
+    public static void listMonthlyMagazines(List<Magazine> magazines) {
+    }
+
+    public static void listItemsByCondition(List<LibraryItem> items, ItemCondition condition) {
+    }
 }

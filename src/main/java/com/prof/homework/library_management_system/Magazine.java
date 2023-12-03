@@ -43,9 +43,12 @@ public class Magazine extends LibraryItem{
    @Override
    public String toString() {
       return "Magazine{" +
-              "issueNumber=" + issueNumber +
-              ", releaseDate=" + releaseDate +
-              ", isMonthly=" + isMonthly +
+              " title = " + getTitle()+
+              " author = " + getAuthor()+
+              " genre = " + getGenre() +
+              " issueNumber = " + issueNumber +
+              ", releaseDate = " + releaseDate +
+              ", isMonthly = " + isMonthly +
               '}';
    }
 }
