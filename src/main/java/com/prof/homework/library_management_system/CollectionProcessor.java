@@ -3,6 +3,7 @@ package com.prof.homework.library_management_system;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CollectionProcessor {
@@ -48,6 +49,9 @@ public class CollectionProcessor {
 
         System.out.println();
         listAvailableItems(items);
+
+        System.out.println();
+        findOldestItem(items);
 
     }
 
@@ -130,6 +134,7 @@ public class CollectionProcessor {
 
     public static void findOldestItem(List<LibraryItem> items) {
     }
+
 
     public static void groupItemsByAuthor(List<LibraryItem> items) {
     }
