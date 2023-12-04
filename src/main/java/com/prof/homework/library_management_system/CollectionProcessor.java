@@ -13,7 +13,7 @@ public class CollectionProcessor {
         Book bookTwo = new Book("Algorithms", "Body", Genre.HISTORY, BookStatus.AVAILABLE, LocalDate.of(1992, 12, 23), 350);
         Book bookThree = new Book("Minor", "John Jonson", Genre.BIOGRAPHY, BookStatus.BORROWED, LocalDate.of(2010, 7, 8), 89);
         Book bookFour = new Book("World", "Body", Genre.SCIENCE, BookStatus.LOST, LocalDate.of(1954, 2, 15), 132);
-        Magazine magazine = new Magazine("title", "Body", Genre.FANTASY, 10, LocalDate.of(2023, 12, 23), true);
+        Magazine magazine = new Magazine("title", "Body", Genre.FANTASY, 10, LocalDate.of(1900, 12, 23), true);
         List<Book> books = new ArrayList<>();
         books.add(bookOne);
         books.add(bookTwo);
