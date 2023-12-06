@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import java.util.*;
 
 public class App {
+
     public static final Faker FAKER = new Faker();
     public static void main(String[] args) {
 
