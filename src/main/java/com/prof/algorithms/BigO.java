@@ -28,7 +28,7 @@ public class BigO {
 //    {
 //        int i, j, a = 0;
 //        for (i = n/2; i <=n; i++)
-//            for (j = 2; j <=n; j=j*2)                   // O(n log n)
+//            for (j = 2; j <=n; j=j*2)                   // O(log n)
 //                a=a+n/2;
 //    }
 //    void test4(int n)
