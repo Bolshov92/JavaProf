@@ -12,6 +12,7 @@ public class RecursionExample {
         int sum = sumNumber(arr, arr.length - 1);
         System.out.println("Sum elements of massive : " + sum);
         System.out.println();
+
         int n ;
         int number = factorial(5);
         System.out.println("Factorial numbers : " + number );

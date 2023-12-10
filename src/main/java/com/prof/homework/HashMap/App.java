@@ -15,7 +15,7 @@ public class App {
         sort.put(new User("Slava", 20), "Info");
         sort.put(new User("Vova", 30), "Info");
         System.out.println(sort);
-
+        System.out.println();
 
         Map<String, Integer> map = new HashMap<>();
         map.put("Alex", 15);
@@ -24,6 +24,8 @@ public class App {
         map.put("Jon", 25);
         map.put("Tayler", 30);
         map.put("Bled", 12);
+        System.out.println(dobleAge(map));
+        System.out.println();
 
         Map<Integer, String> treeMap = new HashMap<>();
         treeMap.put(50, "Alex");
@@ -34,7 +36,6 @@ public class App {
         treeMap.put(40, " Bled");
 
 
-        System.out.println(dobleAge(map));
         System.out.println(filterMap(treeMap));
         System.out.println();
 
@@ -76,13 +77,14 @@ public class App {
     }
 
     public static Map<String, Integer> dobleAge(Map<String, Integer> map) {
+        Map<String, Integer> result = new HashMap<>();
         for (Map.Entry<String, Integer> e : map.entrySet()) {
             String name = e.getKey();
             Integer age = e.getValue();
-            map.put(name, age * 2);
+            result.put(name, age * 2);
 
         }
-        return map;
+        return result;
     }
 
     public static Map<Integer, String> filterMap(Map<Integer, String> treeMap) {
@@ -123,10 +125,16 @@ public class App {
 
     private static Map<Integer, List<String>> averageList(Map<String, List<Integer>> listNumber) {
         Map<Integer, List<String>> studentList = new TreeMap<>();
-        for (Map.Entry<String, List<Integer>> map : listNumber.entrySet()) {
-            int average = average(map.getValue());
-            studentList.put(average, studentList.computeIfAbsent(average, k -> new ArrayList<>())).add(map.getKey());
+
+        if (listNumber != null) {
+            for (Map.Entry<String, List<Integer>> map : listNumber.entrySet()) {
+                List<Integer> numbers = map.getValue();
+                int average = (numbers != null && !numbers.isEmpty()) ? average(numbers) : 0;
+
+                studentList.put(average, studentList.computeIfAbsent(average, k -> new ArrayList<>())).add(map.getKey());
+            }
         }
+
         return studentList;
     }
 

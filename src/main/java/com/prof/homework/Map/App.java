@@ -6,12 +6,10 @@ import java.util.*;
 
 public class App {
 
-    public static final Faker FAKER = new Faker();
-
     public static void main(String[] args) {
 
         Map<String, String> key = new HashMap();
-        key.put(FAKER.name().name(), FAKER.address().lastName());
+        key.put("Hi", "Ring");
         key.put("Welcome", "By");
         key.put("Try", "Did");
         key.put("Choose", "Weather");
