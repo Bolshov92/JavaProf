@@ -61,11 +61,11 @@ public class Recursion {
         }
     }
 
-    public static boolean check(String string, int head, int tail) {
+    public static boolean isPalendromeRecursive(String string, int head, int tail) {
         if (head >= tail) {
             return true;
         } else {
-            return string.charAt(head) == string.charAt(tail) && check(string, head + 1, tail - 1);
+            return string.charAt(head) == string.charAt(tail) && isPalendromeRecursive(string, head + 1, tail - 1);
         }
     }
 
@@ -75,7 +75,7 @@ public class Recursion {
             return true;
         } else {
             String string = str.toUpperCase();
-            return check(string, 0, string.length() - 1);
+            return isPalendromeRecursive(string, 0, string.length() - 1);
         }
     }
 }
