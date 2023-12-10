@@ -66,6 +66,8 @@ public class App {
         hash.put(2, new ArrayList<>(Arrays.asList("Welcome", "Create", "Boss")));
         hash.put(3, new ArrayList<>(Arrays.asList("Did", "Try", "Doing")));
         System.out.println(transform(hash));
+        System.out.println();
+
     }
 
     public static int quantity(Map<String, String> map) {
