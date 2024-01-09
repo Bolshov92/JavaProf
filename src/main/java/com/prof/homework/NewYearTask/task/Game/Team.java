@@ -33,19 +33,6 @@ public class Team<P extends Participant> {
         participants.add(newParticipant);
     }
 
-    public void play(Team<P> teamPlayWith) {
-        String winner;
-        Random random = new Random();
-        int i = random.nextInt(2);
-        if (i == 0) {
-            winner = this.name;
-        } else {
-            winner = teamPlayWith.name;
-        }
-
-        System.out.println("*****Winner is: " + winner + "*****");
-    }
-
     public void addParticipant(P participant) {
     }
 }
