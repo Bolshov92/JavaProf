@@ -2,37 +2,30 @@ package com.prof.homework.NewYearTask.task.Game;
 
 import com.github.javafaker.Faker;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import static com.prof.homework.NewYearTask.task.Game.GenerateTeam.printTeams;
+
 public class Game {
     private static final Faker FAKER = new Faker();
 
     public static void main(String[] args) {
-        Pupil p1 = new Pupil(FAKER.name().name(), 8);
-        Pupil p2 = new Pupil(FAKER.name().name(), 9);
+        Handler handler = new Handler();
 
-        Teenager t1 = new Teenager(FAKER.name().name(), 12);
-        Teenager t2 = new Teenager(FAKER.name().name(), 13);
+        Map<String, List<Adult>> adultTeams = GenerateTeam.genTeam(4, Adult.class);
+        Map<String, List<Teenager>> teenagerTeams = GenerateTeam.genTeam(4, Teenager.class);
+        Map<String, List<Pupil>> pupilTeams = GenerateTeam.genTeam(4, Pupil.class);
 
-        Adult a1 = new Adult(FAKER.name().name(), 25);
-        Adult a2 = new Adult(FAKER.name().name(), 27);
+        handler.addTeams(adultTeams);
+        handler.addTeams(teenagerTeams);
+        handler.addTeams(pupilTeams);
 
-        Team<Pupil> pt1 = new Team<>(FAKER.team().name());
-        Team<Pupil> pt2 = new Team<>(FAKER.team().name());
-        Team<Teenager> tt1 = new Team<>(FAKER.team().name());
-        Team<Teenager> tt2 = new Team<>(FAKER.team().name());
-        Team<Adult> at1 = new Team<>(FAKER.team().name());
-        Team<Adult> at2 = new Team<>(FAKER.team().name());
+        handler.playMatches();
 
-        pt1.addNewParticipant(p1);
-        pt2.addNewParticipant(p2);
-
-        tt1.addNewParticipant(t1);
-        tt2.addNewParticipant(t2);
-
-        at1.addNewParticipant(a1);
-        at2.addNewParticipant(a2);
-
-        tt1.play(tt2);
-
+        handler.printTeams();
+        handler.printResults();
 
     }
 }

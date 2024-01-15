@@ -17,7 +17,7 @@ public class GenerateTeam {
         return mapTeam;
     }
 
-    public static <T extends  Participant> List<T> genParticipant(Class<?> t, int participant) {
+    public static <T extends Participant> List<T> genParticipant(Class<?> t, int participant) {
         List<T> list = new ArrayList<>();
         if (t.getName().contains("Adult")) {
             while (participant != 0) {
@@ -52,15 +52,6 @@ public class GenerateTeam {
                 ((Participant) participant).print();
             }
         }
-    }
-
-    public static void main(String[] args) {
-        Map<String, List<Adult>> adultTeams = GenerateTeam.genTeam(4, Adult.class);
-        Map<String, List<Teenager>> teenagerTeams = GenerateTeam.genTeam(4, Teenager.class);
-        Map<String, List<Pupil>> pupilTeams = GenerateTeam.genTeam(4, Pupil.class);
-        printTeams(adultTeams);
-        printTeams(teenagerTeams);
-        printTeams(pupilTeams);
     }
 }
 
