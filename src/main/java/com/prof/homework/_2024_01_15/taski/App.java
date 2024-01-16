@@ -1,5 +1,8 @@
 package com.prof.homework._2024_01_15.taski;
 
+import com.prof.homework.massiv_list.UniqueElement;
+
+import java.sql.Array;
 import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -17,9 +20,20 @@ public class App {
         //System.out.println(uniqueElement(stringList));
         // System.out.println(unionString(stringList));
         // System.out.println();
+        // System.out.println(characters("Welcome"));
+        //System.out.println();
+        //List<Integer> numbers = Arrays.asList(2, 3, 4, 5, 6, 7, 8, 9);
+        //System.out.println("Sum of squares of odd numbers : " + sumOfSquaresOfOddNumbers(numbers));
+        //System.out.println();
 
-        System.out.println(characters("Welcome"));
+        List<String> strings = Arrays.asList("Slow", "DownTown", "Big", " Mac");
+        // System.out.println(uniqueChars(strings));
+
+        System.out.println(longestString(strings));
+
+
     }
+
 
     public static Set<String> deleteDuplicate(List<String> list) {
         Set<String> stringSet = list.stream()
@@ -78,5 +92,48 @@ public class App {
                         new Person("Nike", 30))
                 .collect(Collectors.groupingBy(Person::getName, Collectors.averagingInt(Person::getAge)));
         return stringDoubleMap;
+    }
+
+    public static int sumOfSquaresOfOddNumbers(List<Integer> numbers) {
+        int sum = numbers.stream()
+                .filter(el -> el % 2 != 0)
+                .mapToInt(el -> el * el)
+                .sum();
+        return sum;
+    }
+
+    public static List<String> uniqueSortedWords(List<String> strings) {
+        List<String> stringList = strings.stream()
+                .flatMap(el -> List.of(el.split("\\s+")).stream())
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+
+        return stringList;
+    }
+
+    //  public static <T> List<T> filterByField(List<T> objects, String fieldName, Object value) throws NoSuchFieldException {
+    //    return null;
+
+    public static List<String> uniqueChars(List<String> strings) {
+        List<String> list = strings.stream()
+                .map(el -> getUniqueChars(el))
+                .collect(Collectors.toList());
+        return list;
+    }
+
+
+    private static String getUniqueChars(String input) {
+        return input.chars()
+                .mapToObj(el -> String.valueOf((char) el))
+                .distinct()
+                .collect(Collectors.joining());
+    }
+
+    public static String longestString(List<String> strings) {
+        String longest = strings.stream()
+                .max(Comparator.comparingInt(String::length))
+                .toString();
+        return longest;
     }
 }
