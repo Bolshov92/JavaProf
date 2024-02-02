@@ -7,8 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="_210823-e-be" />
+        <module name="mockitointegration" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="_210823-e-be" target="20" />
+    </bytecodeTargetLevel>
   </component>
 </project>
