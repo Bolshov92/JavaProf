@@ -11,21 +11,6 @@ public class ValidCard {
         System.out.println(cardNumber);
     }
 
-//    public static boolean isValidCardNumber(int[] card) {
-//        int sum = 0;
-//        for (int i = 0; i < card.length; i++) {
-//            int digit = card[i];
-//            if (i % 2 == 0) {
-//                digit *= 2;
-//                if (digit > 9) {
-//                    digit -= 9;
-//                }
-//            }
-//            sum += digit;
-//        }
-//        return sum % 10 == 0;
-//    }
-
     public static String generateValidCardNumber() {
         int[] numbers = new int[16];
         numbers[0] = 4; // Предполагаем, что карта - Visa, поэтому первая цифра 4
