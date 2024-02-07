@@ -1,5 +1,6 @@
 package main.java.com.prof.homework._2024_31_01.taski;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -45,12 +46,22 @@ public class UniversityProcessor {
 
     // 5. Получить мапу курсов, где ключ - название курса, значение - список тем
     public Map<String, List<String>> getCourseTopicsMap(University university) {
-       return null;
+        Map<String, List<String>>  map = new HashMap<>();
+       university.getDepartments().stream()
+               .flatMap(department -> department.getCourses().stream())
+               .forEach(course -> {
+                   List<String>topics = course.getTopics();
+                   map.computeIfAbsent(course.getTitle(),key->topics);
+               });
+       return map;
+
     }
 
     // 6. Найти департаменты, где все курсы имеют более 3 кредитов
     public List<String> getDepartmentsWithAllCoursesMoreThanThreeCredits(University university) {
-        return null;
+        return null ;
+
+
     }
 
     // 7. Получить список курсов, сгруппированных по количеству кредитов

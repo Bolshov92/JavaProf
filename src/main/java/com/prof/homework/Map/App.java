@@ -1,6 +1,4 @@
-package com.prof.homework.Map;
-
-import com.github.javafaker.Faker;
+package main.java.com.prof.homework.Map;
 
 import java.util.*;
 
