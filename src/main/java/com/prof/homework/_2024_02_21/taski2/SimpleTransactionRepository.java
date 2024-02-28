@@ -3,7 +3,7 @@ package com.prof.homework._2024_02_21.taski2;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo
+
 public class SimpleTransactionRepository implements TransactionRepository {
     private final List<Transaction> transactions = new ArrayList<>();
 

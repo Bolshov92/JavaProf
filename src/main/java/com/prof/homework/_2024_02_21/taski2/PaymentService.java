@@ -1,6 +1,6 @@
 package com.prof.homework._2024_02_21.taski2;
 
-//todo
+
 public class PaymentService {
     private final SimpleNotificationService notificationService;
     private final SimpleTransactionRepository transactionRepository;
